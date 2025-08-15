@@ -25,7 +25,7 @@ if(
     throw new ApiError(400 , "all fields are required")
 }
 
-  const existedUser= user.findOne({
+  const existedUser= User.findOne({
     $or: [{ username },{ email }] 
   })
  
@@ -47,7 +47,7 @@ if(
     throw new ApiError(400, "Avatar file is required" )
   }
 
-  const user = await user.create({
+  const user = await User.create({
     fullName,
     avatar: avatar.url,
     coverImage: coverImage?.url || "",
